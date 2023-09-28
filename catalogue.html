@@ -1,1 +1,51 @@
+// ICON  
+  <ul>
+        <li><a href="#"><ion-icon name="home-outline"></ion-icon></a></li>
+        <li class="active"><a href="#"><ion-icon name="contrast-outline"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="information-outline"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="location-outline"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="megaphone-outline"></ion-icon></a></li>
+        <div id="marker"></div>
+    </ul>
 
+
+// SCRIPT JS
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        let marker = document.querySelector('#marker');
+        let list = document.querySelectorAll('ul li');
+
+        function moveIndicator(e){
+           marker.style.left = e.offsetLeft+'px';
+           marker.style.width = e.offsetWidth+'px'
+        }
+        
+           list.forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                moveIndicator(e.target);
+
+            })
+           })
+
+           // ajouter une classe active dans l'élément de liste de survol
+           // add active class in hover list item
+           function activeLink(){
+            list.forEach((item) =>
+            item.classList.remove('active'));
+            this.classList.add('active');
+           }
+
+           list.forEach((item) =>
+           item.addEventListener('mouseover', activeLink));
+    </script>
+
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card"),{
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-gmare": 1,
+        });
+    </script>
